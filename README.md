@@ -1,2 +1,2 @@
 # Aplicaciones_shiny
-Este repositorio las aplicaciones shiny creadas por mi.
+Este repositorio contiene las aplicaciones shiny creadas por mi.
