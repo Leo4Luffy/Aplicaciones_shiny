@@ -1,0 +1,46 @@
+---
+title: "Un ejemplo sobre genética mendeliana"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: scroll # Esta opción permite que el dashboard se ajuste automaticamente al tamaño del navegador
+    social: ["github", "twitter"]
+    theme: readable
+    logo: Imagenes/Mendel.jpg
+---
+
+<!-- 
+Página web para cambiar el tamaño de las imagenes: https://resizeimage.net/
+Página web de ayuda para diseñar el dashboard: https://rmarkdown.rstudio.com/flexdashboard/index.html
+-->
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+```
+
+Column {data-width=650}
+-----------------------------------------------------------------------
+
+### <font color="black">Grafo-modelo de la genética mendeliana **(<i class="fa fa-hand-spock-o" aria-hidden="true"></i> ¡explicación en el texto!)**</font>
+
+<font color="gray">El siguiente esquema permite dar respuesta a el por qué la apariencia de los hijos puede ser semejante (o diferente) al de sus padres, o, en otras palabras, **¿como se transmiten las caraterísticas a lo largo de las generaciones?**</font>
+
+```{r}
+
+```
+
+Column {data-width=350}
+-----------------------------------------------------------------------
+
+### Chart B
+
+```{r}
+
+```
+
+### Chart C
+
+```{r}
+
+```
+
