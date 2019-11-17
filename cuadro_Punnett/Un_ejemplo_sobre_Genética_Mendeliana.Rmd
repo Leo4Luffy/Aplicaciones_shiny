@@ -18,20 +18,26 @@ Página web de ayuda para diseñar el dashboard: https://rmarkdown.rstudio.com/f
 library(flexdashboard)
 ```
 
-Column {data-width=650}
+Column {data-width=600}
 -----------------------------------------------------------------------
 
-### <font color="black">Grafo-modelo de la genética mendeliana **(<i class="fa fa-hand-spock-o" aria-hidden="true"></i> ¡explicación en el texto!)**</font>
+### <font color="black">Grafo-modelo de la genética mendeliana **(<i class="fas fa-pencil-alt"></i> ¡explicación en el texto!)**</font>
 <!--
 <font color="gray">El siguiente esquema permite dar respuesta a el por qué la apariencia de los hijos puede ser semejante (o diferente) al de sus padres, o, en otras palabras, **¿como se transmiten las caraterísticas a lo largo de las generaciones?**</font>
 -->
+
+El cuadro superior izquierdo simboliza el _ciclo de vida_ de un organismo de acuerdo con la teoría unigamética de la fecundación. Los individuos adultos producen gametos tanto femeninos ("ovogénesis") como masculinos ("gametogénesis masculina"). Luego mediante la fecundación, ocurre la unión de los gametos (proceso conocido como "singamia"), dando lugar al cigoto. La ontogénesis representa el desarrollo de un cigoto en un individuo adulto.
+
+Luego a cada individuo adulto se asocia un "fenotipo", en términos de las características heredables que presenta. En la parte inferior izquierda se presenta las distintas características mendelianas.
+
 ```{r Grafo conceptual de la genética mendeliana, echo = FALSE, eval = TRUE, fig.showtext = TRUE}
 
 library(ggplot2)
 library(dplyr)
 library(emojifont)
-library(showtext) # Link donde estan las fuentes Google (http://www.google.com/fonts)
+library(showtext) # Link donde hay varias fuentes de ejemplo (https://github.com/yixuan/showtext)
 font_add_google('Gochi Hand', 'gochi')
+font_add_google('Lobster', 'lobster')
 showtext_auto()
 
 Grafo_GM <- data.frame(
@@ -39,40 +45,91 @@ Grafo_GM <- data.frame(
 ) %>%
   ggplot(aes(x, y)) +
   geom_blank() +
-  annotate(geom = 'text', x = 3.0, y = 6.0, label = 'Individuos adultos', family = 'gochi', size = 4.4, colour = 'black') +
-  geom_fontawesome('fa-male', x = 2.9, y = 6.4, size = 8.0, color = 'cyan') +
-  geom_fontawesome('fa-female', x = 3.1, y = 6.4, size = 8.0, color = 'yellow') +
+  annotate(geom = 'text', x = 3.0, y = 6.2, label = 'Individuos adultos', family = 'gochi', size = 4.8, colour = 'black') +
+  geom_fontawesome('fa-male', x = 2.9, y = 6.4, size = 8.4, color = 'cyan') +
+  geom_fontawesome('fa-female', x = 3.1, y = 6.4, size = 8.4, color = 'yellow') +
   annotate(geom = 'segment', x = 2.7, xend = 2.2, y = 6.4, yend = 6.4, colour = 'black', size = 0.5) +
-  annotate(geom = 'text', x = 1.6, y = 6.4, label = 'Gametogénesis', family = 'gochi', size = 4.0, colour = 'black') +
+  annotate(geom = 'text', x = 1.6, y = 6.4, label = 'Gametogénesis', family = 'gochi', size = 4.2, colour = 'black') +
   annotate(geom = 'segment', x = 1.35, xend = 1.35, y = 6.5, yend = 7.0, colour = 'black', size = 0.5) +
   annotate(geom = 'segment', x = 1.80, xend = 1.80, y = 6.5, yend = 7.4, colour = 'black', size = 0.5) +
-  geom_fontawesome('fa-mars', x = 1.4, y = 7.2, size = 5.0, color = 'cyan') +
-  geom_fontawesome('fa-venus', x = 1.8, y = 7.6, size = 5.0, color = 'yellow') +
+  geom_fontawesome('fa-mars', x = 1.4, y = 7.2, size = 6.0, color = 'cyan') +
+  geom_fontawesome('fa-venus', x = 1.8, y = 7.6, size = 6.0, color = 'yellow') +
   annotate(geom = 'segment', x = 1.35, xend = 1.35, y = 7.4, yend = 8.4, colour = 'black', size = 0.5) +
   annotate(geom = 'segment', x = 1.80, xend = 1.80, y = 7.8, yend = 8.4, colour = 'black', size = 0.5) +
-  annotate(geom = 'segment', x = 1.35, xend = 2.5, y = 8.4, yend = 8.4, colur = 'black', size = 0.5) +
-  annotate(geom = 'text', x = 3.0, y = 8.4, label = 'Fecundación', family = 'gochi', size = 4.0, colour = 'black') +
-  annotate(geom = 'segment', x = 3.5, xend = 4.65, y = 8.4, yend = 8.4, colur = 'black', size = 0.5) +
-  annotate(geom = 'segment', x = 4.65, xend = 4.65, y = 8.4, yend = 7.8, colur = 'black', size = 0.5) +
-  geom_fontawesome('fa-circle', x = 4.65, y = 7.6, size = 5.0, color = 'gray34') +
-  annotate(geom = 'text', x = 4.65, y = 7.4, label = 'Cigoto', family = 'gochi', size = 4.4, colour = 'black') +
-  annotate(geom = 'segment', x = 4.65, xend = 4.65, y = 7.2, yend = 6.5, colur = 'black', size = 0.5) +
-  annotate(geom = 'text', x = 4.65, y = 6.4, label = 'Ontogénesis', family = 'gochi', size = 4.0, colour = 'black') +
-  annotate(geom = 'segment', x = 4.2, xend = 3.3, y = 6.4, yend = 6.4, colur = 'black', size = 0.5) +
-  geom_fontawesome('fa-hourglass-start', x = 3.0, y = 7.4, size = 8.0, color = 'black') +
+  annotate(geom = 'segment', x = 1.35, xend = 2.5, y = 8.4, yend = 8.4, colour = 'black', size = 0.5) +
+  annotate(geom = 'text', x = 3.0, y = 8.4, label = 'Fecundación', family = 'gochi', size = 4.2, colour = 'black') +
+  annotate(geom = 'segment', x = 3.5, xend = 4.65, y = 8.4, yend = 8.4, colour = 'black', size = 0.5) +
+  annotate(geom = 'segment', x = 4.65, xend = 4.65, y = 8.4, yend = 7.8, colour = 'black', size = 0.5) +
+  geom_fontawesome('fa-circle', x = 4.65, y = 7.6, size = 5.8, color = 'gray34') +
+  annotate(geom = 'text', x = 4.65, y = 7.4, label = 'Cigoto', family = 'gochi', size = 4.8, colour = 'black') +
+  annotate(geom = 'segment', x = 4.65, xend = 4.65, y = 7.2, yend = 6.5, colour = 'black', size = 0.5) +
+  annotate(geom = 'text', x = 4.74, y = 6.4, label = 'Ontogénesis', family = 'gochi', size = 4.2, colour = 'black') +
+  annotate(geom = 'segment', x = 4.2, xend = 3.3, y = 6.4, yend = 6.4, colour = 'black', size = 0.5) +
+  geom_fontawesome('fa-hourglass-start', x = 3.0, y = 7.4, size = 8.4, color = 'black') +
+  annotate(geom = 'segment', x = 2.8, xend = 2.8, y = 6.1, yend = 5.5, colour = 'black', size = 0.5) +
+  geom_fontawesome('fa-eye', x = 2.4, y = 5.4, size = 5.8, color = 'black') +
+  geom_fontawesome('fa-child', x = 2.7, y = 5.4, size = 6.6, color = 'black') +
+  annotate(geom = 'text', x = 3.24, y = 5.4, label = 'Fenotipos', family = 'gochi', size = 4.8, colour = 'black') +
+  annotate(geom = 'segment', x = 2.8, xend = 2.8, y = 5.2, yend = 4.6, colour = 'black', size = 1.0) +
+  geom_fontawesome('fa-eye', x = 2.4, y = 4.5, size = 5.8, color = 'green') +
+  geom_fontawesome('fa-eye', x = 2.4, y = 4.3, size = 5.8, color = 'saddlebrown') +
+  annotate(geom = 'segment', x = 2.6, xend = 2.6, y = 4.5, yend = 4.3, colour = 'black', size = 0.3) +
+  geom_fontawesome('fa-child', x = 2.74, y = 4.34, size = 6.0, color = 'black') +
+  geom_fontawesome('fa-child', x = 3.0, y = 4.36, size = 8.2, color = 'black') +
+  annotate(geom = 'text', x = 4.1, y = 4.3, label = 'Tipos de características', family = 'gochi', size = 4.8, colour = 'black') +
+  annotate(geom = 'segment', x = 2.8, xend = 2.8, y = 3.5, yend = 4.1, colour = 'black', size = 1.0) +
+  geom_fontawesome('fa-eye', x = 2.4, y = 3.4, size = 5.8, color = 'saddlebrown') +
+  geom_fontawesome('fa-child', x = 2.4, y = 3.2, size = 6.0, color = 'black') +
+  geom_fontawesome('fa-child', x = 2.8, y = 3.36, size = 8.2, color = 'black') +
+  geom_fontawesome('fa-eye', x = 2.8, y = 3.14, size = 5.8, color = 'green') +
+  annotate(geom = 'text', x = 3.6, y = 3.16, label = 'Características', family = 'gochi', size = 4.8, colour = 'black') +
+  annotate(geom = 'text', x = 9.6, y = 3.16, label = 'a', family = 'lobster', size = 6.8, colour = 'black') +
+  annotate(geom = 'text', x = 10.0, y = 3.48, label = 'A', family = 'lobster', size = 6.8, colour = 'black') +
+  annotate(geom = 'text', x = 9.6, y = 3.48, label = 'B', family = 'lobster', size = 6.8, colour = 'black') +
+  annotate(geom = 'text', x = 10.0, y = 3.16, label = 'b', family = 'lobster', size = 6.8, colour = 'black') +
+  annotate(geom = 'text', x = 10.44, y = 3.20, label = 'Genes', family = 'gochi', size = 4.8, colour = 'black') +
+  annotate(geom = 'segment', x = 9.8, xend = 9.8, y = 3.6, yend = 4.4, colour = 'black', size = 1.0) +
+  annotate(geom = 'text', x = 9.0, y = 4.6, label = 'A', family = 'lobster', size = 6.8, colour = 'black') +
+  annotate(geom = 'text', x = 9.2, y = 4.6, label = 'a', family = 'lobster', size = 6.8, colour = 'black') +
+  annotate(geom = 'segment', x = 9.4, xend = 9.4, y = 4.7, yend = 4.5, colour = 'black', size = 0.3) +
+  annotate(geom = 'text', x = 9.6, y = 4.6, label = 'B', family = 'lobster', size = 6.8, colour = 'black') +
+  annotate(geom = 'text', x = 9.8, y = 4.6, label = 'b', family = 'lobster', size = 6.8, colour = 'black') +
+  annotate(geom = 'text', x = 10.6, y = 4.6, label = 'Tipos de genes', family = 'gochi', size = 4.8, colour = 'black') +
+  annotate(geom = 'segment', x = 9.8, xend = 9.8, y = 4.8, yend = 5.6, colour = 'black', size = 1.0) +
+  annotate(geom = 'text', x = 9.5, y = 5.7, label = 'ab', family = 'lobster', size = 6.8, colour = 'black') +
+  annotate(geom = 'text', x = 9.5, y = 5.9, label = 'aB', family = 'lobster', size = 6.8, colour = 'black') +
+  annotate(geom = 'text', x = 9.5, y = 6.1, label = 'Ab', family = 'lobster', size = 6.8, colour = 'black') +
+  annotate(geom = 'text', x = 9.5, y = 6.3, label = 'AB', family = 'lobster', size = 6.8, colour = 'black') +
+  annotate(geom = 'text', x = 10.2, y = 5.7, label = 'Genotipos', family = 'gochi', size = 4.8, colour = 'black') +
+  annotate(geom = 'segment', x = 9.2, xend = 7.65, y = 6.2, yend = 6.2, colour = 'black', size = 0.5) +
+  annotate(geom = 'segment', x = 7.65, xend = 7.65, y = 6.2, yend = 7.2, colour = 'black', size = 0.5) +
+  annotate(geom = 'text', x = 7.65, y = 7.4, label = 'Segregación', family = 'gochi', size = 4.8, colour = 'black') +
+  annotate(geom = 'segment', x = 7.65, xend = 7.65, y = 7.6, yend = 8.4, colour = 'black', size = 0.5) +
+  annotate(geom = 'segment', x = 7.65, xend = 9.5, y = 8.4, yend = 8.4, colour = 'black', size = 0.5) +
+  annotate(geom = 'segment', x = 7.65, xend = 9.5, y = 8.4, yend = 8.4, colour = 'black', size = 0.5) +
+  annotate(geom = 'text', x = 9.7, y = 8.4, label = 'A', family = 'lobster', size = 6.8, colour = 'black') +
+  annotate(geom = 'text', x = 9.9, y = 8.4, label = ',', family = 'lobster', size = 6.8, colour = 'black') +
+  annotate(geom = 'text', x = 10.1, y = 8.4, label = 'B', family = 'lobster', size = 6.8, colour = 'black') +
+  annotate(geom = 'text', x = 9.9, y = 8.2, label = 'Genotipos haploides', family = 'gochi', size = 4.8, colour = 'black') +
+  annotate(geom = 'segment', x = 10.3, xend = 11.78, y = 8.4, yend = 8.4, colour = 'black', size = 0.5) +
+  annotate(geom = 'segment', x = 11.78, xend = 11.78, y = 8.4, yend = 7.6, colour = 'black', size = 0.5) +
+  annotate(geom = 'text', x = 11.78, y = 7.4, label = 'Recombinación', family = 'gochi', size = 4.8, colour = 'black') +
+  annotate(geom = 'segment', x = 11.78, xend = 11.78, y = 7.2, yend = 6.2, colour = 'black', size = 0.5) +
+  annotate(geom = 'segment', x = 11.78, xend = 9.8, y = 6.2, yend = 6.2, colour = 'black', size = 0.5) +
+  geom_fontawesome('fa-hourglass-start', x = 9.9, y = 7.4, size = 8.4, color = 'black') +
+  scale_y_continuous(limits = c(3.0, 8.4)) +
+  #scale_x_continuous(limits = c(2.5, 8.0)) +
   theme_void() +
   theme(axis.text = element_blank(),
         axis.ticks = element_blank(),
-        axis.title = element_blank())
+        axis.title = element_blank()) #+
+  #labs(caption = 'Imagen Grafo-modelo de la genética mendeliana (adaptada)') +
+  #ggsave('Grafo_modelo.png')
 
 Grafo_GM
 ```
 
-El anterior esquema permite dar respuesta a <font color="black">__como se transmiten las caraterísticas a lo largo de las generaciones__</font>.
-
-El circulo superior izquierdo simboliza el _ciclo de vida_ de un organismo de acuerdo con la teoría unigamética de la fecundación. Los individuos adultos producen gametos tanto femeninos ("ovogénesis") como masculinos ("gametogénesis masculina"). Luego mediante la fecundación, ocurre la unión de los gametos (proceso conocido como "singamia"), dando lugar al cigoto.
-
-Column {data-width=350}
+Column {data-width=400}
 -----------------------------------------------------------------------
 
 ### Chart B
