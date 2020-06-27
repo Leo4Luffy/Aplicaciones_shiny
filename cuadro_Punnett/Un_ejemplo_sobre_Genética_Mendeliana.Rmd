@@ -124,7 +124,7 @@ Grafo_GM <- data.frame(
         axis.ticks = element_blank(),
         axis.title = element_blank()) #+
   #labs(caption = 'Imagen Grafo-modelo de la genética mendeliana (adaptada)') +
-  #ggsave('Grafo_modelo.png')
+  #ggsave('Imagenes/Grafo_modelo.png')
 
 Grafo_GM
 ```
