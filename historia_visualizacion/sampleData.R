@@ -1,9 +1,7 @@
-# Simple timeline with 4 items
+# Datos con la historia sobre la visualización y los gráficos estadísticos.
 
 dataBasic <- tibble::tribble(
   ~id, ~content, ~start, ~end,
-  1, 'Uno', '2016-01-10', NA,
-  2, 'Dos', '2016-01-11', NA,
-  3, 'Rango', '2016-01-20', '2016-02-04',
-  4, 'Cuatro', '2016-02-14', NA
+  1, 'Primeros mapas y diagramas', '105', '1581',
+  2, '<u>Medición del año</u> con gran precisión<br> y construcción de la primera carta<br> estelar integral ', '158', NA
   )

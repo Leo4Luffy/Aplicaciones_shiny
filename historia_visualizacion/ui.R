@@ -36,11 +36,11 @@ fluidPage(
     div(id = "subtitle",
         "Historia sobre la visualización y gráficos estadisticos"),
     div(id = "subsubtitle",
-        "Jorge Leonardo López Martínez y Duvan Ariel Nieves",
+        "Jorge Leonardo López Martínez y Duvan Ariel Nieves Ruiz",
         tags$a(href = "", ""),
         HTML("&bull;"),
         "Disponible en",
-        tags$a(href = "", "GitHub"),
+        tags$a(href = "https://github.com/Leo4Luffy/Aplicaciones_shiny/tree/master/historia_visualizacion", "GitHub"),
         HTML("&bull;"),
         tags$a(href = "", ""), ""
     )
@@ -81,7 +81,7 @@ fluidPage(
   ),
   div(class = "sourcecode",
       "El código usado para crear esta aplicación la puedes encontrar en",
-      tags$a(href = "https://github.com/daattali/timevis/tree/master/inst/example",
+      tags$a(href = "https://github.com/Leo4Luffy/Aplicaciones_shiny/tree/master/historia_visualizacion",
              "GitHub")
   )
 )

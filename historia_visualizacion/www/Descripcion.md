@@ -1,1 +1,2 @@
-Describir aquí el documento...
+Esta aplicación pretende mostrar una breve reseña histórica sobre la __visualización de datos__  y los __gráficos estadísticos__. Nos basamos para su realización en el documento ["Milestones in the history of thematic cartography, statistical
+graphics, and data visualization"](https://github.com/Leo4Luffy/Un_curso_amigable_sobre_R/tree/master/Documentos), el cual presenta un listado cronológico sobre el historial de la visualización de datos.
