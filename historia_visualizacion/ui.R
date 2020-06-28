@@ -34,7 +34,7 @@ fluidPage(
       ""
     ),
     div(id = "subtitle",
-        "Historia sobre la visualización y gráficos estadisticos"),
+        "Cronología sobre la visualización y gráficos estadisticos"),
     div(id = "subsubtitle",
         "Jorge Leonardo López Martínez y Duvan Ariel Nieves Ruiz",
         tags$a(href = "", ""),
