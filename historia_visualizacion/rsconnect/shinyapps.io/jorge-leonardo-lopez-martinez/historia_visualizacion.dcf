@@ -5,8 +5,8 @@ account: jorge-leonardo-lopez-martinez
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 2511299
-bundleId: 3326304
+bundleId: 3327282
 url: https://jorge-leonardo-lopez-martinez.shinyapps.io/historia_visualizacion/
-when: 1593365427.96784
+when: 1593390473.73127
 asMultiple: FALSE
 asStatic: FALSE
